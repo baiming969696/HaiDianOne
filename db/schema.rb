@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120074552) do
+ActiveRecord::Schema.define(version: 20141120091645) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20141120074552) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "pages", force: true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.integer  "wiki_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["wiki_id"], name: "index_pages_on_wiki_id"
 
   create_table "posts", force: true do |t|
     t.string   "title"

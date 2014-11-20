@@ -9,3 +9,31 @@
 </p>
 <%= link_to 'Back', wikis_path %>
 <%= link_to 'Edit', edit_wiki_path(@wiki) %>
+
+<h2>Pages</h2>
+<% @wiki.pages.each do |page| %>
+  <p>
+    <strong>name</strong>
+    <%= page.name %>
+  </p>
+  
+  <p>
+    <strong>body</strong>
+    <%= page.body %>
+  </p>
+<% end %>
+
+<h2>Add a page:</h2>
+<%= form_for([@wiki, @wiki.pages.build]) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

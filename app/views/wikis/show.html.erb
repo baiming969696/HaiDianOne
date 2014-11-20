@@ -1,0 +1,11 @@
+<p>
+  <strong>Name:</strong>
+  <%= @wiki.name %>
+</p>
+ 
+<p>
+  <strong>Descripion:</strong>
+  <%= @wiki.description %>
+</p>
+<%= link_to 'Back', wikis_path %>
+<%= link_to 'Edit', edit_wiki_path(@wiki) %>

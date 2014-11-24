@@ -1,0 +1,56 @@
+/ Fixed navbar
+.navbar.navbar-default{role:"navigation"}
+  .container
+    %a.navbar-brand{href:"/"}
+      %img{src:"/assets/logo.svg", height:"100%"}
+
+    / Search
+    %form.navbar-form.navbar-left{role:"search"}
+      .form-group
+        %input.form-control{type:"text", placeholder:"搜索"}
+
+    %span.pull-right
+      / %button.btn.navbar-btn{"data-toggle" => "modal", "data-target" => "#newRepoModal"}
+      %a.btn.btn-icon.navbar-btn{href:new_wiki_path}
+        %li.fa.fa-plus
+      -#
+        / Sign up/Sign in
+        %button.btn.btn-success.navbar-btn{type:"button"} Sign up
+        %button.btn.btn-default.navbar-btn{type:"button"} Sign in
+
+/ Main
+.container{role:"main"}
+
+  / Main jumbotron for a primary marketing message or call to action
+  .jumbotron
+    %h1 创意没有壁垒
+    %p 加入点典社区，分享你的创意。
+    %p 让整个社区帮助你实现梦想。
+
+  .list-group
+    - @wikis.each do |wiki|
+      %a.list-group-item{href: wiki_path(wiki)}
+        %h4.list-group-item-heading= wiki.name
+        %p.list-group-item-text= wiki.description
+
+/ New Repo Modal
+
+#newRepoModal.modal.fade{tabindex:"-1", role:"dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{type:"button", "data-dismiss" => "modal"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        %h4.modal-title 新建点子
+      .modal-body
+        %form{role:"form"}
+          .form-group
+            %label{for:"repoName"} 点子代号
+            %input#repoName.form-control{type:"text"}
+          .form-group
+            %label{for:"repoDesc"} 点子描述
+            %textarea#repoDesc.form-control{rows:"3"}
+      .modal-footer
+        %button.btn.btn-default{type:"button", "data-dismiss" => "modal"} 放弃
+        %button.btn.btn-success{type:"button"} 确认

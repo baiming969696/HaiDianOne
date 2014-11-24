@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141120091645) do
 
-  create_table "articles", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pages", force: true do |t|
     t.string   "name"
     t.text     "body"
@@ -29,20 +22,6 @@ ActiveRecord::Schema.define(version: 20141120091645) do
   end
 
   add_index "pages", ["wiki_id"], name: "index_pages_on_wiki_id"
-
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "wikis", force: true do |t|
     t.string   "name"
